@@ -9,16 +9,16 @@ class FirstScreen extends StatelessWidget{
         child: 
             Center(
                child:Text(
-                   "Your lucky number is ${generateNumber()}",
+                   generateNumber(),
                    textDirection: TextDirection.ltr,
                    style: TextStyle(color: Colors.white, fontSize: 40.0),
       )
     ),
       );
   }
-  int generateNumber(){
+  String generateNumber(){
     var random = Random();
     int luckyNumber = random.nextInt(10);
-    return luckyNumber;
+    return "Your luck number is $luckyNumber";
   }
 }
