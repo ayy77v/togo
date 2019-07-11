@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import './app_screens/first_screen.dart';
 
-void main(){
-  runApp(
-    Center(
-      child:Text(
-      "Ha",textDirection: TextDirection.ltr
+void main()=> runApp(MyFlutterApp());
+
+
+class MyFlutterApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return   MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title:'Regroup',
+      home:
+      Scaffold(
+        appBar: AppBar(title: Text('Comes')),
+        body: FirstScreen()      
       )
-    )
-  );
+
+    );
+  }
 }
