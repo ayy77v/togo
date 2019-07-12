@@ -71,7 +71,9 @@ class Home extends StatelessWidget{
          ),
           ),
         ],
-      )
+      ),
+      CarImageAsset(),
+      CarBookButton()
         ],
       )
       
@@ -86,4 +88,46 @@ class Home extends StatelessWidget{
     
    
   }
+}
+
+class CarImageAsset extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('images/car.jpg');
+    Image image = Image(image: assetImage, width: 250.0,height: 250.0,);
+    return Container(child: image,);
+  }
+}
+
+class CarBookButton extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 30.0),
+      width: 250.0,
+      height: 30.0,
+      child: RaisedButton(
+        color:  Colors.deepOrange,
+        child: Text('pressed the button',
+        style: TextStyle(
+          fontSize: 20.0,
+          color: Colors.white
+        ),),
+        elevation: 6.0,
+        onPressed: () =>
+          bookRide(context)
+        ),
+    );
+  }
+}
+
+void bookRide(BuildContext context){
+  var alertDialog = AlertDialog(
+    title: Text('ride book success'),
+    content: Text('have a pleasent trip'),
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) => alertDialog   
+  );
 }
