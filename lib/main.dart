@@ -1,30 +1,51 @@
 import 'package:flutter/material.dart';
-//import './app_screens/home.dart';
 
-void main()=> runApp(MaterialApp(
-  title: 'Exploring UI widget',
-  home: Scaffold(
-    appBar: AppBar(title: Text('Long list'),),
-    body: getListView()
-  ),
-)
-);
-
-List<String> getListElements(){
-  var items = List<String>.generate(1000,(counter)=>"Item $counter");
-  return items;
+void main() {
+  runApp(
+    MaterialApp(
+      title: "Stateful App",
+      home: FavoriteCity(),
+    )
+  );
+}
+class FavoriteCity extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return _FavoriteCityState();
+  }
 }
 
-Widget getListView(){
-  var listItems = getListElements();
-  var listView = ListView.builder(
-    itemBuilder: (context,index){
-      return ListTile(
-        leading: Icon(Icons.arrow_right),
-        title: Text(listItems[index]),
-        onTap: ()=> debugPrint("${listItems[index]} was tapped"),
-      );
-    }
+class _FavoriteCityState extends State<FavoriteCity>{
+  String nameCity="";
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("Favorite Widget is created");
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Stateful example"),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(20),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              onSubmitted: (String userInput){
+                setState(() {
+                  nameCity = userInput;
+                  debugPrint("set state is created");
+                });
+              
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.all(30.0),
+              child:Text(
+              "Your bext city is $nameCity",
+              style: TextStyle(fontSize: 20.0),
+            ))
+          ],
+        ),
+      ),
     );
-    return listView;
+  }
 }
